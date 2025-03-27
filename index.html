@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise for You ❤️</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #ffcccc;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            padding: 20px;
+        }
+        h1 {
+            color: #d147a3;
+            font-size: 2rem;
+            animation: fadeIn 2s ease-in-out;
+        }
+        .heart-button {
+            font-size: 24px;
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 20px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.3s;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        .heart-button:hover {
+            background-color: #ff1a1a;
+        }
+        .heart-button:active {
+            transform: scale(0.9);
+        }
+        .gallery {
+            display: none;
+            margin-top: 20px;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .gallery-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .gallery-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+        .gallery img {
+            width: 250px;
+            height: 150px;
+            margin: 0 20px;
+            border-radius: 10px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+            transform: scale(0.5);
+            transition: transform 0.5s ease-in-out;
+        }
+        .description {
+            font-size: 1.2rem;
+            color: #d147a3;
+            max-width: 300px;
+            text-align: left;
+        }
+        .home-link {
+            display: block;
+            margin-top: 40px;
+            font-size: 1.2rem;
+            color: white;
+            background-color: #d147a3;
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .home-link:hover {
+            background-color: #b13b87;
+        }
+        .music-link {
+            display: block;
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: white;
+            background-color: #ff4d4d;
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .music-link:hover {
+            background-color: #cc0000;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <h1>คลิกหัวใจให้ครบ 5 ครั้งเพื่อรับเซอร์ไพรส์! ❤️</h1>
+    <button class="heart-button" onclick="clickHeart()">❤️ <span id="count">0</span></button>
+    
+    <div class="gallery" id="gallery">
+        <h2 style="color: #d147a3;">เซอร์ไพรส์! 🎉</h2>
+        <div class="gallery-item">
+            <img src="image.png" alt="Surprise 1">
+            <p class="description">นี่คือภาพแรกที่หน้าหมาน้อยย ❤️</p>
+        </div>
+        <div class="gallery-item">
+            <img src="image.png1.png" alt="Surprise 2">
+            <p class="description">และนี่คืออีกหนึ่งช่วงเวลาพิเศษที่เรามีร่วมกัน 💕</p>
+        </div>
+        <a href="https://www.youtube.com/watch?v=fgj8x925w0o" target="_blank" class="music-link">กดซะอ้วนน🎶</a>
+        <a href="index.html" class="home-link">กลับไปหน้าแรก</a>
+    </div>
+    
+    <script>
+        let count = 0;
+        function clickHeart() {
+            count++;
+            document.getElementById('count').innerText = count;
+            if (count >= 5) {
+                document.querySelector('.heart-button').style.display = 'none';
+                const gallery = document.getElementById('gallery');
+                gallery.style.display = 'block';
+                setTimeout(() => {
+                    gallery.style.opacity = '1';
+                    document.querySelectorAll('.gallery img').forEach((img, index) => {
+                        setTimeout(() => {
+                            img.style.transform = 'scale(1)';
+                        }, index * 300);
+                    });
+                }, 100);
+            }
+        }
+    </script>
+</body>
+</html>
